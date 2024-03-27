@@ -146,9 +146,9 @@ Finally, we use the 2.5, 50,  and 97.5 percentiles of the distribution of \rzero
 \caption{\textbf{Time intervals and biting empirical distributions from contact tracing data.}
 %\mr{replace caption with a description of the takehome point of the figure?}
 Panel A is the distribution of observed incubation periods. Panel B is the distribution of incubation periods weighted by each dog's biting frequency (Panel C). The weighted distribution corresponds to the contribution of incubation periods to generation intervals (Panel D).
-Black dashed lines show the means of each time-interval distribution; blue dashed lines show the mean incubation period and generation interval (22.3 and 24.9 days, respectively) reported in \citep{hampson2009transmission}.
+Black dashed lines show the means of each time-interval distribution; blue dashed lines show the mean incubation period and generation interval (22.3 and 24.9 days, respectively) reported by \cite{hampson2009transmission}.
 }
-%\mr{color difference is faint for me, use two different dash patterns to amke this sissue go away. }
+\bmb{Panel C y-axis label is inconsistent with the other panels.}
 \flabel{GISI}
 \end{figure}
 \end{center}
@@ -156,15 +156,18 @@ Black dashed lines show the means of each time-interval distribution; blue dashe
 \FloatBarrier
 
 \Fref{GISI} shows the empirical distributions of the observed incubation periods, rabid dog biting frequency, and generation intervals from contact tracing data.
-The mean observed incubation period is \Sexpr{signif(meanVec["Incubation Period: Dogs"],3)} days (n = \Sexpr{countVec["Incubation Period: Dogs"]} dogs), the mean biting frequency is \Sexpr{signif(mean_biting_freq,3)} bites per rabid dog, and the weighted mean incubation period is \Sexpr{signif(meanVec["Weighted Incubation Period"],3)} days (n = \Sexpr{countVec["Incubation Period: Biter"]} biting dogs).
-The mean observed generation interval is \Sexpr{signif(meanVec["Generation Interval"],3)} days (n = \Sexpr{countVec["Incubation Period: Biter"]} primary infections resulting in \Sexpr{countVec["Generation Interval"]} secondary cases), which is substantially larger than the mean generation interval constructed from independently summing incubation periods and wait times (24.9 days \citep{hampson2009transmission}).
-The weighted incubation period distribution more closely resembles the generation interval distribution than the incubation period of all dogs.
+The mean observed incubation period is \Sexpr{signif(meanVec["Incubation Period: Dogs"],3)} days ($n = \Sexpr{countVec["Incubation Period: Dogs"]}$ dogs), the mean biting frequency is \Sexpr{signif(mean_biting_freq,3)} bites per rabid dog, and the weighted mean incubation period is \Sexpr{signif(meanVec["Weighted Incubation Period"],3)} days ($n = \Sexpr{countVec["Incubation Period: Biter"]}$ biting dogs).
+The mean observed generation interval is \Sexpr{signif(meanVec["Generation Interval"],3)} days ($n = \Sexpr{countVec["Incubation Period: Biter"]}$ primary infections resulting in \Sexpr{countVec["Generation Interval"]} secondary cases), which is substantially larger than the mean generation interval constructed from summing independently sampled incubation periods and wait times (24.9 days \citep{hampson2009transmission}).
+The weighted incubation period distribution is a better approximation of the generation interval distribution than the unweighted incubation period of all dogs.
 
 \begin{center}
 \begin{figure}[h]
 \includegraphics[page=1,scale = 0.7]{rplot_combo.Rout.pdf}
 \caption{\textbf{Growth rate estimates for global historical outbreaks of rabies.} Estimates and 95\% confidence intervals of \littler in global historical outbreaks estimated from exponential (dotted) and logistic (solid) model fits.}
-Different colors represent different phases from the times series data. 
+Different colors represent different phases from the times series data.
+\bmb{this could be prettier (non-default colours, shapes as well as colours to identify phases,
+  maybe use solid lines for logistic since we want to emphasize it, rotate lines in legend to be
+  horizontal ...) ?}
 \flabel{littler}
 \end{figure}
 \end{center}
@@ -173,13 +176,16 @@ Different colors represent different phases from the times series data.
 
 We estimated \littler from historical outbreak data (\fref{littler}). 
 For a direct comparison of the method used in \citep{hampson2009transmission}, we also estimated \littler from an exponential model. Both methods (exponential and logistic) were applied to all phases of the global historical outbreaks. 
-Overall, \littler estimates from the logistical model are larger with wider confidence intervals compared to \littler estimates from the exponential model (i.e. the estimation method used in \citep{hampson2009transmission}). 
+Overall, \littler estimates from the logistical model are larger with wider confidence intervals compared to \littler estimates from the exponential model (as used in \citep{hampson2009transmission}). 
 
 \begin{center}
 \begin{figure}[h]
 \includegraphics[page=1,scale = 0.7]{R0combo.Rout.pdf}
 \caption{\textbf{Reproductive number estimates for global historical outbreaks of rabies}}
-Previous estimates of \rzero are shown in blue highlights; \rzero estimates and confidence interval (95\% quantiles from the estimated \rzero sample) from our hybrid approach using exponential (dotted lines) and logistic (solid lines). \rzero are corrected for vaccination coverage.\mli{todo: add dates to location name.}
+Previous estimates of \rzero are shown in blue highlights; \rzero estimates and confidence interval (95\% quantiles from the estimated \rzero sample) from our hybrid approach using exponential (dotted lines) and logistic (solid lines). \rzero values are corrected for vaccination coverage.\mli{todo: add dates to location name.}
+\bmb{colours don't match previous figure.
+  This is a little busy. Since we illustrated the difference between exponential and logistic in the previous figure, could we include only the logistic fits (and the previous $\rzero$ estimates in this figure? What did the
+previous esimates do about phases?}
 \flabel{Rzero}
 \end{figure}
 \end{center}
